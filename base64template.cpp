@@ -4,7 +4,7 @@
 #include <string.h>
 #include <wincrypt.h>
 
-# compile: x86_64-w64-mingw32-g++ result.cpp -o Myloader.exe -lcrypt32
+# compile: x86_64-w64-mingw32-g++ base64template.cpp -o Myloader.exe -lcrypt32
 
 unsigned char payload[] = "payload:";
 unsigned int pay_len = sizeof(payload);
