@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+# compile: x86_64-w64-mingw32-g++ xortemplate.cpp -o Myloader.exe
 
 void XOR(char * data, size_t data_len, char * key, size_t key_len) {
         int j;
