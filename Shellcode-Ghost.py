@@ -49,9 +49,6 @@ if __name__ == "__main__":
 		if args.template != None:
 			template = gettemplate(args.template)
 			result = ''.join('\\x' + c[2:] for c in result)
-			#result.replace("0x", '\\x')
-			#result.replace("[", '')
-			#result.replace("]", '')
 			template = putpayload(template, str(result))
 			if args.encrypt_xor != None :
 				template = putkey(template, args.encrypt_xor)
